@@ -1,0 +1,179 @@
+$spacings: px, 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96;
+
+:root {
+    @each $spacing in $spacings {
+        @if $spacing ==px {
+            --spacing-#{$spacing}: 1px;
+        }
+
+        @else if $spacing % 2==0 {
+            --spacing-#{$spacing}: calc(1rem * #{$spacing} / 4);
+        }
+    }
+}
+
+@each $spacing in $spacings {
+    @if $spacing ==px or $spacing % 2==0 {
+        $size: var(--spacing-#{$spacing});
+
+        .p-#{$spacing} {
+            padding: $size;
+        }
+
+        .pl-#{$spacing} {
+            padding-left: $size;
+        }
+
+        .pr-#{$spacing} {
+            padding-right: $size;
+        }
+
+        .pt-#{$spacing} {
+            padding-top: $size;
+        }
+
+        .pb-#{$spacing} {
+            padding-bottom: $size;
+        }
+
+        .px-#{$spacing} {
+            padding-left: $size;
+            padding-right: $size;
+        }
+
+        .py-#{$spacing} {
+            padding-top: $size;
+            padding-bottom: $size;
+        }
+
+        .m-#{$spacing} {
+            margin: $size;
+        }
+
+        .ml-#{$spacing} {
+            margin-left: $size;
+        }
+
+        .mr-#{$spacing} {
+            margin-right: $size;
+        }
+
+        .mt-#{$spacing} {
+            margin-top: $size;
+        }
+
+        .mb-#{$spacing} {
+            margin-bottom: $size;
+        }
+
+        .mx-#{$spacing} {
+            margin-left: $size;
+            margin-right: $size;
+        }
+
+        .my-#{$spacing} {
+            margin-top: $size;
+            margin-bottom: $size;
+        }
+
+        .w-#{$spacing} {
+            width: $size;
+        }
+
+        .h-#{$spacing} {
+            height: $size;
+        }
+
+        .max-w-#{$spacing} {
+            max-width: $size;
+        }
+
+        .max-h-#{$spacing} {
+            max-height: $size;
+        }
+
+        .min-w-#{$spacing} {
+            min-width: $size;
+        }
+
+        .min-h-#{$spacing} {
+            min-height: $size;
+        }
+
+        .b-#{$spacing} {
+            border: $size solid var(--border-color);
+        }
+
+        .bl-#{$spacing} {
+            border-left: $size solid var(--border-color);
+        }
+
+        .br-#{$spacing} {
+            border-right: $size solid var(--border-color);
+        }
+
+        .bt-#{$spacing} {
+            border-top: $size solid var(--border-color);
+        }
+
+        .bb-#{$spacing} {
+            border-bottom: $size solid var(--border-color);
+        }
+
+        .bx-#{$spacing} {
+            border-left: $size solid var(--border-color);
+            border-right: $size solid var(--border-color);
+        }
+
+        .by-#{$spacing} {
+            border-top: $size solid var(--border-color);
+            border-bottom: $size solid var(--border-color);
+        }
+    }
+}
+
+$sizes: full, min, max, fit;
+
+@each $size in $sizes {
+    $actualSize: 0;
+
+    @if $size ==full {
+        $actualSize: 100%;
+    }
+
+    @else if $size ==min {
+        $actualSize: min-content;
+    }
+
+    @else if $size ==max {
+        $actualSize: max-content;
+    }
+
+    @else if $size ==fit {
+        $actualSize: fit-content;
+    }
+
+    .w-#{$size} {
+        width: $actualSize;
+    }
+
+    .h-#{$size} {
+        height: $actualSize;
+    }
+
+    .max-w-#{$size} {
+        max-width: $actualSize;
+    }
+
+    .max-h-#{$size} {
+        max-height: $actualSize;
+    }
+
+    .min-w-#{$size} {
+        min-width: $actualSize;
+    }
+
+    .min-h-#{$size} {
+        min-height: $actualSize;
+    }
+}

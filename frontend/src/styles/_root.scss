@@ -1,0 +1,45 @@
+:root {
+    --base: 255, 216, 217;
+    --light: 255, 255, 255;
+    --dark: 113, 93, 98;
+
+    --alpha: 1;
+    --faded-alpha: .3;
+    --more-faded-alpha: .1;
+    --fadest-alpha: .05;
+
+    --bg-color: rgba(var(--base), var(--alpha));
+    --faded-bg-color: rgba(var(--base), var(--faded-alpha));
+    --more-faded-bg-color: rgba(var(--base), var(--more-faded-alpha));
+    --fadest-bg-color: rgba(var(--base), var(--fadest-alpha));
+
+    --dark-color: rgba(var(--dark), var(--alpha));
+    --faded-dark-color: rgba(var(--dark), var(--faded-alpha));
+    --more-faded-dark-color: rgba(var(--dark), var(--more-faded-alpha));
+    --fadest-dark-color: rgba(var(--dark), var(--fadest-alpha));
+
+    --light-color: rgba(var(--light), var(--alpha));
+    --faded-light-color: rgba(var(--light), var(--faded-alpha));
+    --more-faded-light-color: rgba(var(--light), var(--more-faded-alpha));
+    --fadest-light-color: rgba(var(--light), var(--fadest-alpha));
+
+    --border-color: var(--faded-dark-color);
+    --text-color: var(--dark-color);
+
+    --tag-brown-bg: #805959;
+    --tag-brown-text: #ffb3b3;
+
+    --tag-green-bg: #598066;
+    --tag-green-text: #b2ffd9;
+
+    --tag-purple-bg: #80596c;
+    --tag-purple-text: #ffb2d9;
+
+    --success: 49, 162, 76;
+    --warning: 242, 169, 24;
+    --danger: 228, 30, 63;
+
+    --success-color: rgba(var(--success), var(--alpha));
+    --warning-color: rgba(var(--warning), var(--alpha));
+    --danger-color: rgba(var(--danger), var(--alpha));
+}

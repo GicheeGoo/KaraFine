@@ -1,0 +1,44 @@
+@import './spacing';
+
+.flex {
+    display: flex;
+}
+
+$justifies: start, end, center, between, around;
+
+@each $justify in $justifies {
+    @if $justify ==start or $justify ==end or $justify ==center {
+        .justify-#{$justify} {
+            justify-content: $justify;
+        }
+    }
+
+    @else {
+        .justify-#{$justify} {
+            justify-content: space-#{$justify};
+        }
+    }
+}
+
+$items: start, end, center;
+
+@each $item in $items {
+    .items-#{$item} {
+        align-items: $item;
+    }
+}
+
+.bg {
+    background-color: var(--bg-color);
+}
+
+$bgTypes: bg, light, dark;
+$bgs: faded, more-faded, fadest;
+
+@each $bg in $bgs {
+    @each $type in $bgTypes {
+        .#{$bg}-#{$type} {
+            background-color: var(--#{$bg}-#{$type}-color);
+        }
+    }
+}
