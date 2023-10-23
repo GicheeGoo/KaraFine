@@ -1,7 +1,14 @@
 import { Module } from '@nestjs/common';
-import { VideoModule } from './video/video.module';
+import { ConfigModule } from '@nestjs/config';
+import { MongooseModule } from '@nestjs/mongoose';
+
+import { VideoModule } from './data/video/video.module';
 
 @Module({
-    imports: [VideoModule],
+    imports: [
+        ConfigModule.forRoot(),
+        MongooseModule.forRoot(process.env.mongodb as string),
+        VideoModule,
+    ],
 })
 export class AppModule {}

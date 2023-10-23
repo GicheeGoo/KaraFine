@@ -6,6 +6,9 @@ export abstract class BaseDto {
         obj: T,
         options?: ClassTransformOptions
     ): T {
-        return plainToClass(this, obj, { excludeExtraneousValues: true, ...options });
+        return plainToClass(this, obj, {
+            excludeExtraneousValues: true,
+            ...options,
+        });
     }
 }
