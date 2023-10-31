@@ -11,7 +11,6 @@ import {
 
 import { BaseDto } from 'src/base.dto';
 import { Video } from 'src/schemas/video.schema';
-import { Classes } from 'src/utils/classes';
 
 // https://github.com/typestack/class-validator
 
@@ -30,14 +29,14 @@ export class VideoQuery extends BaseDto {
     @IsNumber()
     @Min(5)
     @Expose()
-    maxResults?: number = 10;
+    maxResults?: number;
 }
 
 export class AddedVideo extends Video {
     @IsOptional()
     @IsBoolean()
     @Expose()
-    hasPriority?: boolean;
+    highPriority?: boolean;
 }
 
 export class UpdatedVideo extends BaseDto {
@@ -48,7 +47,7 @@ export class UpdatedVideo extends BaseDto {
     @IsNotEmpty()
     @IsBoolean()
     @Expose()
-    hasPriority: boolean;
+    highPriority: boolean;
 }
 
 export class RemovedVideo extends BaseDto {

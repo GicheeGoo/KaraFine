@@ -4,6 +4,10 @@ import { Model } from 'mongoose';
 
 import { Video } from 'src/schemas/video.schema';
 
+type ChangePriorityProps =
+    | ({ highPriority: true } & Pick<Video, 'videoId'>)
+    | ({ highPriority: false } & Partial<Pick<Video, 'videoId'>>);
+
 @Injectable()
 export class VideoService {
     constructor(@InjectModel(Video.name) private videoModel: Model<Video>) {}
@@ -12,6 +16,23 @@ export class VideoService {
     async add(addVideoDto: Video): Promise<Video> {
         const addedVideo = new this.videoModel(addVideoDto);
         return addedVideo.save();
+    }
+
+    @UsePipes(new ValidationPipe())
+    async changePriority(data: ChangePriorityProps): Promise<Video | null> {
+        const { highPriority, videoId } = data;
+
+        if (highPriority) {
+            const [, res] = await Promise.all([
+                this.videoModel.findOneAndUpdate({ highPriority }, { highPriority: !highPriority }),
+                this.videoModel.findOneAndUpdate({ videoId }, { highPriority }),
+            ]);
+
+            return res;
+        }
+
+        const filter = videoId ? { videoId } : { highPriority: !highPriority };
+        return this.videoModel.findOneAndUpdate(filter, { highPriority });
     }
 
     @UsePipes(new ValidationPipe())

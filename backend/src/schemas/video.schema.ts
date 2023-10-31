@@ -25,7 +25,7 @@ export class Video extends BaseDto {
     @IsString()
     @Expose()
     @Prop()
-    description?: string = '';
+    description?: string;
 
     @IsObject()
     @Expose()
