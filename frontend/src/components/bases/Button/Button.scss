@@ -1,0 +1,92 @@
+$sizes: sm, md, lg;
+$colors: light, dark, danger, warning, success;
+$variants: fill, outline, empty;
+
+.btn {
+    --btn-color: transparent;
+    --btn-bg: transparent;
+    --btn-border: transparent;
+    --btn-font-size: 1rem;
+    --btn-padding-x: 0px;
+    --btn-height: 0px;
+    --btn-radius: 0px;
+    --btn-alpha: var(--alpha);
+
+    padding: 0 var(--btn-padding-x);
+    height: var(--btn-height);
+    font-size: var(--btn-font-size);
+
+    border: 1px solid rgba(var(--btn-border), var(--btn-alpha));
+    border-radius: var(--btn-radius);
+    outline: none;
+    transition: all .3s;
+    cursor: pointer;
+
+    &:hover {
+        --btn-alpha: .85;
+    }
+
+    &:active {
+        --btn-alpha: .7;
+    }
+
+    &:focus-visible {
+        --btn-alpha: .55;
+        outline: 4px solid rgba(var(--btn-bg), var(--btn-alpha));
+        outline-offset: 1px;
+    }
+
+    @each $color in $colors {
+        &-#{$color} {
+            @if $color ==light {
+                --btn-color: var(--dark-color);
+            }
+
+            @else {
+                --btn-color: var(--light-color);
+            }
+
+            --btn-bg: var(--#{$color});
+            --btn-border: var(--#{$color});
+        }
+    }
+
+    &-fill {
+        background-color: rgba(var(--btn-bg), var(--btn-alpha));
+        color: var(--btn-color);
+        border-color: rgba(var(--btn-border), var(--btn-alpha));
+    }
+
+    &-outline {
+        color: rgba(var(--btn-bg), var(--btn-alpha));
+        background-color: transparent;
+        border-color: rgba(var(--btn-border), var(--btn-alpha));
+    }
+
+    &-empty {
+        background-color: transparent;
+        border-color: transparent;
+        color: var(--text-color);
+    }
+
+    &-sm {
+        --btn-padding-x: .5rem;
+        --btn-font-size: .75rem;
+        --btn-height: 1.5rem;
+        --btn-radius: 4px;
+    }
+
+    &-md {
+        --btn-padding-x: 1rem;
+        --btn-font-size: 1rem;
+        --btn-height: 2rem;
+        --btn-radius: 6px;
+    }
+
+    &-lg {
+        --btn-padding-x: 1rem;
+        --btn-font-size: 1.25rem;
+        --btn-height: 2.5rem;
+        --btn-radius: 8px;
+    }
+}
