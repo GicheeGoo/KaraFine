@@ -2,14 +2,15 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Image from 'next/image';
 
-import { Box } from '@/components/Box/Box';
-import { Flex } from '@/components/Flex/Flex';
+import { Box } from '@/components/bases/Box/Box';
+import { Flex } from '@/components/bases/Flex/Flex';
 
 import logo from '@/assets/logo.png';
 
 import '@/styles/_root.scss';
 import '@/styles/_var.scss';
 import '@/styles/_reset.scss';
+import { Button } from '@/components/bases/Button/Button';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -29,6 +30,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) =>
                             <Image alt='' src={logo} width={28} height={28} />
                             <h1>KaraFine</h1>
                         </Flex>
+                        <Button />
                     </Box>
                 </Flex>
                 {children}
